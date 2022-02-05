@@ -1,0 +1,30 @@
+﻿@{
+    ListModel _model = (ListModel)Model;
+
+    HeroBannerModel Banner = new HeroBannerModel()
+    {
+        Title = "Build apps for any screen",
+        Description = "flutter transforms the app development process. build ,test, and deploy beautiful mobile, web, desktop, and embeded apps from a single codebase.",
+        Picture = _model.Blog.Cover
+    };
+}
+
+<section id="banner" class="container-fluid p-0 banner section" dir="ltr">
+
+    <div class="container text-center">
+
+        <div class="container position-relative p-0 col-12">
+
+            <h2 class="text-white position-absolute top center col-8 font" id="bannertitle">@Banner.Title</h2>
+            <img src="@Banner.Picture" id="bannerimage" class="imgcenter img" alt="@Banner.Title">
+
+        </div>
+
+        <h4 class="text-light font pt-3" id="bannerdescription">
+            @Banner.Description
+        </h4>
+        <button class="btn btn-light rounded-pill p-1 ps-4 pe-4 mb-4 mt-2 col-lg-3 col-md-3 font" id="bannerdescriptionbtn">Get Started</button>
+
+    </div>
+
+</section>

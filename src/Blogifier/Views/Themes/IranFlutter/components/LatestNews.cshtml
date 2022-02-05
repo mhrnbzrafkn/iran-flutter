@@ -1,0 +1,63 @@
+﻿@{
+    ListModel _model = (ListModel)Model;
+    List<PostItem> Posts = _model.Posts.ToList();
+}
+
+@if (Posts != null)
+{
+    <section class="container-fluid m-0 pt-5 pb-5 section" id="latestnews" dir="ltr">
+
+        <div class="container">
+
+            <div class="align-items-center text-center">
+
+                <h2 class="pb-5">Latest News</h2>
+
+                <div class="row text-start">
+
+                    @foreach (var post in Posts)
+                    {
+
+                        <div class="col-12 col-lg-4 col-md-6 d-flex justify-content-center">
+
+                            <div class="card" style="width: 18rem;" dir="ltr">
+
+                                <div class="featured-cover">
+
+                                    <a href="~/posts/@post.Slug" class="featured-cover-link">
+
+                                        <img src="@post.Cover" class="card-img-top img" alt="@post.Title">
+
+                                    </a>
+
+                                </div>
+
+                                <div class="card-body featured-content">
+
+                                    <h5 class="featured-title">
+
+                                        <a class="featured-link" href="~/posts/@post.Slug">@post.Title</a>
+
+                                    </h5>
+
+                                    @if (post.Description.Length > 50)
+                                        @post.Description = post.Description.Substring(0, 50);
+
+                                    <p class="card-text">@post.Description ...</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+}

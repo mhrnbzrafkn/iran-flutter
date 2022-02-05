@@ -1,0 +1,80 @@
+﻿@layout SettingsLayout
+@page "/admin/settings/"
+@inject HttpClient _http
+@inject IStringLocalizer<Resource> _localizer
+@inject IJSRuntime JS
+<PageTitle Title="@_localizer["basic-settings"]" />
+
+<h1 class="section-title">@_localizer["basic-settings"]</h1>
+<div class="section-content -half">
+    @if (Blog != null)
+    {
+        <EditForm model="@Blog" OnValidSubmit="Save">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-item">
+                <label class="form-label">@_localizer["default-cover"]</label>
+                <div class="settings-cover" data-bs-toggle="modal" data-bs-target="#selectImageModal">
+                    <img class="settings-cover-img" id="defaultCover" src="@Blog.Cover" alt="@Blog.Title" />
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="form-label">@_localizer["title"]</label>
+                <input type="text" class="form-control" @bind="Blog.Title" name="title" />
+            </div>
+            <div class="form-item">
+                <label class="form-label">@_localizer["description"]</label>
+                <textarea class="form-control" cols="30" rows="5" @bind="Blog.Description" name="description"></textarea>
+            </div>
+            <div class="form-item">
+                <button type="button" class="btn btn-blogifier px-5" @onclick="Save">@_localizer["save"]</button>
+            </div>
+
+            <div class="modal fade" id="selectImageModal" tabindex="-1" aria-labelledby="selectImageModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="selectImageModal">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input id="image-file" class="btn" type="file" accept="image/*" @oninput="@((e) => { banner=(string)e.Value;})" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-blogifier" @onclick="SetCover" data-bs-dismiss="modal">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </EditForm>
+    }
+</div>
+<ToasterComponent @ref="Toaster" />
+
+@code {
+    protected Blog Blog { get; set; }
+    protected ToasterComponent Toaster;
+    protected string banner;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Blog = await _http.GetFromJsonAsync<Blog>("api/blog");
+    }
+
+    protected async Task Save()
+    {
+        if (banner != null)
+        {
+            await JS.InvokeVoidAsync("UploadImage");
+            Blog.Cover = "img/" + "banner-Image." + banner.Split('.').Last();
+        }
+        Toaster.Toast(await _http.PutAsJsonAsync<Blog>("api/blog", Blog));
+    }
+
+    protected async Task SetCover()
+    {
+        await JS.InvokeVoidAsync("SetCover");
+    }
+}

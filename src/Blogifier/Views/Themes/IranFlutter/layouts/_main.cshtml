@@ -1,0 +1,52 @@
+@using Blogifier.Views.Themes.IranFlutter.layouts
+
+@{
+    var request = Url.ActionContext.HttpContext.Request;
+    var absoluteUrl = $"{request.Scheme}://{request.Host.ToUriComponent()}{request.PathBase.ToUriComponent()}";
+
+    var siteTitle = Model.Blog.Title;
+    var siteDesc = Model.Blog.Description;
+    var siteFeed = absoluteUrl + "/feed/rss";
+
+    var pageTitle = siteTitle + " | " + siteDesc;
+    var pageDesc = siteDesc;
+    var pageCanonical = absoluteUrl;
+
+    if (Model.ToString().EndsWith("PostModel"))
+    {
+        PostModel postModel = (PostModel)Model;
+        pageTitle = postModel.Post.Title + " | " + siteTitle;
+        pageDesc = postModel.Post.Description.StripHtml();
+        pageCanonical = postModel.Post.PostType == PostType.Post ? absoluteUrl + "/posts/" + postModel.Post.Slug : absoluteUrl + "/" + postModel.Post.Slug;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iran flutter</title>
+
+    <link rel="stylesheet" href="~/themes/IranFlutter/css/style.css">
+    <link rel="stylesheet" href="~/themes/IranFlutter/themify-icons/themify-icons.css">
+    <link href=@link.Bootstrap_css rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <partial name="../components/header.cshtml" />
+    @RenderBody()
+    <partial name="../components/footer.cshtml" />
+
+    <script src=@link.jquery_js></script>
+    <script src=@link.fontawesome_js></script>
+    <script src=@link.popper_js></script>
+    <script src=@link.bootstrap_Bundle_js></script>
+    <script src=@link.bootstrap_js></script>
+
+</body>
+
+</html>

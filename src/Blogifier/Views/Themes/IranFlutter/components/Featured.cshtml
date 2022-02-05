@@ -1,0 +1,64 @@
+﻿@{
+    ListModel listModel = (ListModel)Model;
+    List<PostItem> _featured = listModel.Posts.Where(p => p.Featured).Take(2).ToList();
+}
+
+
+@if (_featured != null)
+{
+    <section class="container-fluid m-0 section">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-4 col-md-10 d-flex justify-content-center align-items-center py-4">
+
+                    <div class="d-flex flex-column justify-content-start px-2" dir="ltr">
+                        <p class="text-start font" id="featuredtext" style="display: block;" dir="ltr">
+                            <span style="color: #007bff99;font: bolder;">
+                                Build Apps For Any screen
+                            </span><br>
+                            <span>
+                                flitter transforms the app development process. build ,
+                                test, and deploy beautiful mobile ,web, desktop,and
+                                embeded apps from a single codebase.
+                            </span>
+                        </p>
+                        <a class="btn btn-outline-primary rounded-pill col-lg-6 col-md-4 font" id="featuredbtn">Try It in DartPad</a>
+                    </div>
+
+                </div>
+
+                @foreach (var post in _featured)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex justify-content-center pt-2">
+
+                        <div class="card" style="width: 18rem;" dir="ltr">
+                            <div class="featured-cover">
+                                <a href="~/posts/@post.Slug" class="featured-cover-link">
+                                    <img src="@post.Cover" class="card-img-top img" alt="@post.Title">
+                                </a>
+                            </div>
+                            <div class="card-body featured-content">
+                                <h5 class="featured-title">
+                                    <a class="featured-link" href="~/posts/@post.Slug">@post.Title</a>
+                                </h5>
+
+                                @if (post.Description.Length > 50)
+                                    @post.Description = post.Description.Substring(0, 50);
+
+                                <p class="card-text">@post.Description ...</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </section>
+}

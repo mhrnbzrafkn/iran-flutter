@@ -1,0 +1,420 @@
+:root {
+    --Theme-color: rgba(0, 123, 255, 0.6);
+    --Theme-text-color: rgb(255,255,255);
+    --banner-color: rgb(40, 120, 200);
+    --hover-color: rgba(255, 255, 255, 0.3);
+    --header-height: 225px;
+}
+
+.banner {
+    background: var(--banner-color) !important;
+}
+
+    .banner div {
+        padding-top: var(--header-height);
+    }
+
+.glassify {
+    background: var(--Theme-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.navbar {
+    background: var(--Theme-color) !important;
+    padding: 0 !important;
+    flex: 0 0 50%;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute !important;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.imgcenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.img {
+    border-radius: 15px !important;
+}
+
+#bannerimage.img {
+    width: 80%;
+    border-radius: 50px;
+}
+
+h2.center {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%,-50%);
+}
+
+.searchbox {
+    background-color: var(--searchbox-color);
+}
+
+.dropdown-menu {
+    border-radius: 20px 20px 20px 20px !important;
+    box-shadow: 0 5px 15px rgba(73, 73, 73, 0.479);
+}
+
+.dropdown-item {
+    background: none !important;
+    color: black !important;
+    border-radius: 20px;
+}
+
+    .dropdown-item:hover {
+        background: rgb(235, 235, 235) !important;
+    }
+
+.Hoverable {
+    transition: all 0.5s;
+    height: 100%;
+}
+
+    .Hoverable:hover {
+        box-shadow: inset 0 0 100px 100px var(--hover-color);
+    }
+
+    .Hoverable:not(:hover) {
+        backdrop-filter: inherit;
+    }
+
+.HoverableForm {
+    padding: 2px;
+}
+
+    .HoverableForm div input {
+        border-radius: 0 20px 20px 0;
+        background: var(--Theme-color) !important;
+        filter: saturate(80%);
+        border: none;
+    }
+
+        .HoverableForm div input:focus {
+            border-radius: 0 20px 20px 0;
+            background-color: var(--hover-color) !important;
+            border: none;
+        }
+
+    .HoverableForm div span {
+        border-radius: 0 20px 20px 0;
+        background: none;
+        border: none;
+    }
+
+    .HoverableForm :hover {
+        transition: ease 0.5s;
+        padding: 2px;
+        background-color: rgba(0, 62, 129, 0.102);
+        border-radius: 20px;
+    }
+
+    .HoverableForm :not(:hover) {
+        transition: ease 0.5s;
+        padding: 2px;
+        border-radius: 20px;
+    }
+
+.dropdown:hover .dropdown-menu {
+    transition: ease 1s;
+    display: block;
+    margin-top: 0;
+}
+
+.nav-item a {
+    color: white;
+}
+
+a.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    filter: brightness(200%);
+}
+
+.card {
+    border: none !important;
+}
+
+.section {
+    height: inherit;
+    width: 100%;
+}
+
+#banner.section {
+    position: relative;
+}
+
+#latestnews h2 {
+    color: var(--Theme-color);
+}
+
+footer.container-fluid {
+    background: var(--banner-color);
+}
+
+footer .btn {
+    transition: ease 0.25s;
+    background: #ffffff;
+}
+
+    footer .btn:hover {
+        box-shadow: inset 0 0 100px 100px rgba(200, 200, 200, 0.2),0 0 10px rgba(0, 0, 0, 0.5);
+        border-color: rgba(200, 200, 200, 0.2);
+    }
+
+footer a {
+    color: #00386d;
+}
+
+footer p {
+    color: #ffffff;
+}
+
+.navbar-toggler:focus {
+    outline: 0 !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.width-fit-content {
+    width: fit-content;
+}
+
+.w {
+    width: 50%;
+}
+
+.top{
+    top: 10% !important;
+}
+
+@media (min-width: 320px) {
+    .font {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 375px) {
+    .font {
+        font-size: 18px;
+    }
+
+    #bannertitle.font {
+        font-size: 18px;
+    }
+
+    #bannerdescription.font {
+        font-size: 16px;
+    }
+
+    #bannerdescriptionbtn.font {
+        font-size: 14px;
+    }
+
+    #abouttext.font {
+        font-size: 18px;
+    }
+
+    #aboutlink.font {
+        font-size: 16px;
+    }
+
+    #aboutfootertext.font {
+        font-size: 16px;
+    }
+
+    #aboutfooterlink.font {
+        font-size: 18px;
+    }
+
+    #featuredtext.font {
+        font-size: 18px;
+    }
+
+    #footertext.font {
+        font-size: 16px;
+    }
+
+    .w {
+        width: 50%;
+    }
+}
+
+@media (min-width: 425px) {
+    .font {
+        font-size: 22px;
+    }
+
+    .w {
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .font {
+        font-size: 20px;
+    }
+
+    #bannertitle.font {
+        font-size: 32px;
+    }
+
+    #bannerdescription.font {
+        font-size: 25px;
+    }
+
+    #bannerdescriptionbtn.font {
+        font-size: 18px;
+    }
+
+    #abouttext.font {
+        font-size: 20px;
+    }
+
+    #aboutlink.font {
+        font-size: 16px;
+    }
+
+    #aboutfootertext.font {
+        font-size: 16px;
+    }
+
+    #aboutfooterlink.font {
+        font-size: 18px;
+    }
+
+    #featuredtext.font {
+        font-size: 18px;
+    }
+
+    #footertext.font {
+        font-size: 16px;
+    }
+
+    .w {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .font {
+        font-size: 18px;
+    }
+
+    #bannertitle.font {
+        font-size: 48px;
+    }
+
+    #bannerdescription.font {
+        font-size: 25px;
+    }
+
+    #bannerdescriptionbtn.font {
+        font-size: 25px;
+    }
+
+    #abouttext.font {
+        font-size: 25px;
+    }
+
+    #aboutlink.font {
+        font-size: 18px;
+    }
+
+    #aboutfootertext.font {
+        font-size: 18px;
+    }
+
+    #aboutfooterlink.font {
+        font-size: 18px;
+    }
+
+    #featuredtest.font {
+        font-size: 18px;
+    }
+
+    #footertext.font {
+        font-size: 16px;
+    }
+
+    .card-text {
+        font-size: 18px;
+    }
+
+    .w {
+        width: fit-content;
+    }
+
+        .w.nav-link {
+            margin-left: 5px;
+            margin-right: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+}
+
+@media (min-width: 1440px) {
+    .font {
+        font-size: 18px;
+    }
+
+    #bannertitle.font {
+        font-size: 60px;
+    }
+
+    #bannerdescription.font {
+        font-size: 34px;
+    }
+
+    #bannerdescriptionbtn.font {
+        font-size: 32px;
+    }
+
+    #abouttext.font {
+        font-size: 32px;
+    }
+
+    #aboutlink.font {
+        font-size: 32px;
+    }
+
+    #aboutfootertext.font {
+        font-size: 24px;
+    }
+
+    #aboutfooterlink.font {
+        font-size: 26px;
+    }
+
+    #featuredtext.font {
+        font-size: 26px;
+    }
+
+    #featuredbtn{
+        font-size: 20px;
+    }
+
+    #footertext.font {
+        font-size: 22px;
+    }
+
+    #footerbtn.font{
+        font-size: 20px;
+    }
+
+    .card-text {
+        font-size: 22px;
+    }
+}
